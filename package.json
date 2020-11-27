@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/WebHeroSchool/reactfin/issues"
   },
-  "homepage": "https://github.com/WebHeroSchool/reactfin#readme"
+  "homepage": "https://github.com/WebHeroSchool/reactfin#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  }
 }
