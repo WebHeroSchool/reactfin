@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import { count, length } from './number';
 
 const numn = 23;
 
@@ -11,18 +12,8 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <p style={{
-          fontSize: 12+30
-        }}> Hello World!</p>
         <p>
-        {numn}
-        {45}
-        {numn && 'Truth'}</p>
-        <p>{numn ? "Numn is a number" : "Numn isn't a number"}</p>
-        <p>{undefined}
-        {null}
-        {false}
-        {true}
+          count * length = { count * length }
         </p>
         <a
           className="App-link"
