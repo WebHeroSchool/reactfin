@@ -1,12 +1,5 @@
 import React from 'react';
-
-const ItemList = () => (
-  <ol>
-  <li>First task</li>
-  <li>Second task</li>
-  <li>Third task</li>
-  </ol>
-)
+import ItemList from '../ItemList/ItemList'
 
 const App = () => (<div>
   <h1>Elementum</h1>
