@@ -1,6 +1,7 @@
 import React from 'react';
 import ItemList from '../ItemList/ItemList'
 import Footer from '../Footer/Footer'
+import './App.css';
 
 const Todo1 = 'Выполнить домашнюю работу';
 
@@ -18,8 +19,8 @@ const App = () => {
 	];
 
 	return (
-	<div>
-		<h1>Задачи на сегодня</h1>
+	<div className='wrap'>
+		<h1 className='wrap__title'>Задачи на сегодня</h1>
 		<ItemList items = { items }/>
 		<Footer count = {3} />
   	</div>);
