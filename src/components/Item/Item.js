@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Item = ({ Todo1 }) => (<span>{ Todo1 }</span>
+const Item = ({ value }) => (<span>{ value }</span>
 	)
 
 	export default Item;

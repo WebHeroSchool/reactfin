@@ -1,11 +1,9 @@
 import React from 'react';
 import Item from '../Item/Item';
 
-const ItemList = ({Todo1}) => (
+const ItemList = ({items}) => (
   <ol>
-  <li><Item Todo1 = { Todo1 }/></li>
-  <li><Item Todo1 = { 'Убраться' }/></li>
-  <li><Item Todo1 = { 'Прогуляться по набережной' }/></li>
+  {items.map(item =><li key = {item.value}><Item value = { item.value }/></li>)}
   </ol>
 )
 
