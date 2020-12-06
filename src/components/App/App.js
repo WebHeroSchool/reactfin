@@ -7,28 +7,30 @@ import DeleteAllComplete from '../DeleteAllComplete/DeleteAllComplete';
 import TaskFilter from '../TaskFilter/TaskFilter';
 
 class App extends React.Component {
-	render() {
-		const items = [
-		{	
-			value: 'Выполнить домашнюю работу',
-			isDone: true
-		},
-		{
-			value: 'Убраться',
-			isDone: true
-		},
-		{
-			value: 'Прогуляться по набережной',
-			isDone: false
-		}	
-	];
+	state = {
+		items: [
+			{	
+				value: 'Выполнить домашнюю работу',
+				isDone: true
+			},
+			{
+				value: 'Убраться',
+				isDone: true
+			},
+			{
+				value: 'Прогуляться по набережной',
+				isDone: false
+			}	
+		]
+	};
 
+	render() {
 	return (
 	<div className={styles.wrap}>
 		<h1 className={styles.title}>Задачи на сегодня</h1>
 		<TaskFilter />
 		<TextFieldItem />
-		<ItemList items = { items }/>
+		<ItemList items = { this.state.items }/>
 		<DeleteAllComplete />
 		<Footer count = {3} />
   	</div>)};
