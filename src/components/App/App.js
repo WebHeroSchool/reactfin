@@ -6,8 +6,6 @@ import TextFieldItem from '../TextField/TextField';
 import DeleteAllComplete from '../DeleteAllComplete/DeleteAllComplete';
 import TaskFilter from '../TaskFilter/TaskFilter';
 
-const Todo1 = 'Выполнить домашнюю работу';
-
 const App = () => {
 	const items = [
 		{	

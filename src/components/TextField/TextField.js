@@ -5,7 +5,7 @@ const TextFieldItem = () => (
 	 <TextField
           id="filled-full-width"
           label="Добавить новую задачу"
-          style={{ margin: 8 }}
+          style={{ marginTop: 8 }}
           fullWidth
           margin="normal"
           InputLabelProps={{
