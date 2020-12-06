@@ -5,8 +5,10 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
 const TaskFilter = () => (    
-    <Paper>
+    <Paper className={classes.root}>
   <Tabs
+    value={value}
+    onChange={handleChange}
     indicatorColor="primary"
     textColor="primary"
     centered
