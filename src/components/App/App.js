@@ -24,43 +24,18 @@ class App extends React.Component {
 		]
 	};
 
+	OnClickDone = isDone => console.log(isDone);
+
 	render() {
 	return (
 	<div className={styles.wrap}>
 		<h1 className={styles.title}>Задачи на сегодня</h1>
 		<TaskFilter />
 		<TextFieldItem />
-		<ItemList items = { this.state.items }/>
+		<ItemList items = { this.state.items } OnClickDone={this.OnClickDone}/>
 		<DeleteAllComplete />
 		<Footer count = {3} />
   	</div>)};
 };
-
-// const App = () => {
-// 	const items = [
-// 		{	
-// 			value: 'Выполнить домашнюю работу',
-// 			isDone: true
-// 		},
-// 		{
-// 			value: 'Убраться',
-// 			isDone: true
-// 		},
-// 		{
-// 			value: 'Прогуляться по набережной',
-// 			isDone: false
-// 		}	
-// 	];
-
-// 	return (
-// 	<div className={styles.wrap}>
-// 		<h1 className={styles.title}>Задачи на сегодня</h1>
-// 		<TaskFilter />
-// 		<TextFieldItem />
-// 		<ItemList items = { items }/>
-// 		<DeleteAllComplete />
-// 		<Footer count = {3} />
-//   	</div>);
-//   }
 
 export default App;
