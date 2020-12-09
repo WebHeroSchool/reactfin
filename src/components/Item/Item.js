@@ -3,7 +3,7 @@ import styles from './Item.module.css';
 import classnames from 'classnames';
 import Checkbox from '@material-ui/core/Checkbox';
 
-const Item = ({ value, isDone, OnClickDone }) => (<span className={
+const Item = ({ value, isDone, OnClickDone, id }) => (<span className={
 	classnames({
 		[styles.item]: true,
 		[styles.done]: isDone
@@ -12,7 +12,7 @@ const Item = ({ value, isDone, OnClickDone }) => (<span className={
 }>
 	<Checkbox
         checked={isDone}
-		onClick ={() => OnClickDone(isDone)}
+		onClick ={() => OnClickDone(id)}
         size="small"
         inputProps={{ 'aria-label': 'checkbox with small size' }}
     />

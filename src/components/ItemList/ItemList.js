@@ -3,9 +3,15 @@ import Item from '../Item/Item';
 import DeleteButton from '../DeleteButton/DeleteButton';
 import styles from './ItemList.module.css';
 
-const ItemList = ({items, OnClickDone}) => (
+const ItemList = ({id, items, OnClickDone}) => (
   <ul className={styles.list}>
-  {items.map(item =><li key = {item.value}><Item value = { item.value } isDone = { item.isDone } OnClickDone = {OnClickDone} /><div className={styles.button}><DeleteButton /></div></li>)}
+  {items.map(item =><li key = {item.value}>
+  	<Item 
+  	value = { item.value } 
+  	isDone = { item.isDone } 
+  	id = {item.id }
+  	OnClickDone = {OnClickDone} />
+  	<div className={styles.button}><DeleteButton /></div></li>)}
   </ul>
 )
 
