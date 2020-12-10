@@ -25,4 +25,9 @@ const Item = ({ value, isDone, OnClickDone, id, DeleteSelectedElement }) => (<sp
         </IconButton></div></span>
 	)
 
+Item.defaultProps = {
+    isDone: false
+  };
+
+
 	export default Item;

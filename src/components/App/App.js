@@ -49,7 +49,6 @@ class App extends React.Component {
 		...state.items,
 		{
 			value,
-			isDone: false,
 			id: state.count + 1
 		}],
 		count: state.count + 1
@@ -63,7 +62,7 @@ class App extends React.Component {
 		<TextFieldItem  OnClickAdd={this.OnClickAdd}/>
 		<ItemList items = { this.state.items } OnClickDone={this.OnClickDone} DeleteSelectedElement={this.DeleteSelectedElement}/>
 		<DeleteAllComplete />
-		<Footer count = {this.state.count}/>
+		<Footer />
   	</div>)};
 };
 

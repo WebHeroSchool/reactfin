@@ -15,4 +15,8 @@ const ItemList = ({id, items, OnClickDone, DeleteSelectedElement}) => (
   </ul>
 )
 
+ItemList.defaultProps = {
+    isDone: false
+  };
+
 export default ItemList;
