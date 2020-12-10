@@ -44,12 +44,23 @@ class App extends React.Component {
 		this.setState ({items: deleteItem});
 	};
 
+	OnClickAdd = value => this.setState (state => ({
+		items: [
+		...state.items,
+		{
+			value,
+			isDone: false,
+			id: state.count + 1
+		}],
+		count: state.count + 1
+	}));
+
 	render() {
 	return (
 	<div className={styles.wrap}>
 		<h1 className={styles.title}>Задачи на сегодня</h1>
 		<TaskFilter />
-		<TextFieldItem />
+		<TextFieldItem  OnClickAdd={this.OnClickAdd}/>
 		<ItemList items = { this.state.items } OnClickDone={this.OnClickDone} DeleteSelectedElement={this.DeleteSelectedElement}/>
 		<DeleteAllComplete />
 		<Footer count = {this.state.count}/>
