@@ -5,6 +5,7 @@ import styles from './App.module.css';
 import TextFieldItem from '../TextField/TextField';
 import DeleteAllComplete from '../DeleteAllComplete/DeleteAllComplete';
 import TaskFilter from '../TaskFilter/TaskFilter';
+import PropTypes from 'prop-types';
 
 class App extends React.Component {
 	state = {
@@ -64,6 +65,13 @@ class App extends React.Component {
 		<DeleteAllComplete />
 		<Footer />
   	</div>)};
+};
+
+App.propTypes = {
+  isDone: PropTypes.bool,
+  id: PropTypes.number,
+  value: PropTypes.string
+
 };
 
 export default App;
