@@ -12,9 +12,11 @@ class TextFieldItem extends React.Component {
     this.setState ({
           inputValue: ''
         });
-    if(this.state.inputValue !== '') {
+    if(this.state.inputValue !== '' && this.state.inputValue !== 'Введите задачу' ) {
     this.props.OnClickAdd(this.state.inputValue.toUpperCase())} else {
-      alert('ОШИБКА ВВОДА');
+      this.setState ({
+          inputValue: 'Введите задачу'
+        });
     }
   }
   
