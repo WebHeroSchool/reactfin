@@ -50,6 +50,7 @@ class App extends React.Component {
 		...state.items,
 		{
 			value,
+			isDone: true,
 			id: state.count + 1
 		}],
 		count: state.count + 1
