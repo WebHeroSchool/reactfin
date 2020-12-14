@@ -2,8 +2,25 @@ import React from 'react';
 import styles from './Item.module.css';
 import classnames from 'classnames';
 import Checkbox from '@material-ui/core/Checkbox';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
 
-const Item = ({ value, isDone, OnClickDone, id }) => (<span className={
+class Item extends React.Component {
+	componentDidMount() {
+		console.log('Монтирование');
+	}
+
+	componentDidUpdate() {
+		console.log('Обновление');
+	}
+
+	componentDidUnount() {
+		console.log('Размонтирование');
+	}
+
+	render() {
+		const { value, isDone, OnClickDone, id, DeleteSelectedElement } = this.props;
+		return (<span className={
 	classnames({
 		[styles.item]: true,
 		[styles.done]: isDone
@@ -16,7 +33,13 @@ const Item = ({ value, isDone, OnClickDone, id }) => (<span className={
         size="small"
         inputProps={{ 'aria-label': 'checkbox with small size' }}
     />
-	{ value }</span>
-	)
+	{ value }
+	  	<div className={styles.button}>
+	  	<IconButton aria-label="delete"onClick ={() => DeleteSelectedElement(id)}>
+          <DeleteIcon fontSize="small" />
+        </IconButton></div></span>);
+	}
+}
+
 
 	export default Item;
