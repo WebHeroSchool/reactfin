@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import ItemList from '../ItemList/ItemList'
 import Footer from '../Footer/Footer'
 import styles from './App.module.css';
@@ -7,8 +7,8 @@ import DeleteAllComplete from '../DeleteAllComplete/DeleteAllComplete';
 import TaskFilter from '../TaskFilter/TaskFilter';
 import PropTypes from 'prop-types';
 
-class App extends React.Component {
-	state = {
+const App = () => {
+	const initalState = {
 		items: [
 			{	
 				value: 'Выполнить домашнюю работу',
@@ -29,43 +29,48 @@ class App extends React.Component {
 		count: 3
 	};
 
-	OnClickDone = id => {
-		const NewItemList = this.state.items.map(item => {
+	const [items, setItems] = useState(initalState.items);
+	const [count, setCount] = useState(initalState.count);
+
+	useEffect(() => {console.log('клац');})
+	useEffect(() => {console.log('образовался');}, [items])
+
+	const OnClickDone = id => {
+		const NewItemList = items.map(item => {
 			const NewItem = { ...item };
 			if (item.id === id) {
 				NewItem.isDone = !item.isDone;
 			}
 			return NewItem;
 		});
-		this.setState ({items: NewItemList});
+		setItems(NewItemList)
 	};
 
-	DeleteSelectedElement = id => {
-		const deleteItem = this.state.items.filter(item => item.id !==id);
-		this.setState ({items: deleteItem});
+	const DeleteSelectedElement = id => {
+		const deleteItem = items.filter(item => item.id !==id);
+		setItems(deleteItem)
+		setCount(count - 1)
 	};
 
-	OnClickAdd = value => this.setState (state => ({
-		items: [
-		...state.items,
-		{
-			value,
-			isDone: true,
-			id: state.count + 1
-		}],
-		count: state.count + 1
-	}));
+	const OnClickAdd = value =>{
+		 setItems(
+		 	[...items,
+		 		{
+		 			value,
+		 			isDone: false,
+		 			id: count + 1
+		 		}]);
+		 setCount(count + 1)
+	}
 
-	render() {
-	return (
-	<div className={styles.wrap}>
+	return (<div className={styles.wrap}>
 		<h1 className={styles.title}>Задачи на сегодня</h1>
 		<TaskFilter />
-		<TextFieldItem  OnClickAdd={this.OnClickAdd}/>
-		<ItemList items = { this.state.items } OnClickDone={this.OnClickDone} DeleteSelectedElement={this.DeleteSelectedElement}/>
+		<TextFieldItem  OnClickAdd={OnClickAdd}/>
+		<ItemList items = { items } OnClickDone={OnClickDone} DeleteSelectedElement={DeleteSelectedElement}/>
 		<DeleteAllComplete />
 		<Footer />
-  	</div>)};
+  	</div>)
 };
 
 App.propTypes = {
