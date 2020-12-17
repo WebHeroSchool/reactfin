@@ -1,83 +1,30 @@
-import React, {useState, useEffect} from 'react';
-import ItemList from '../ItemList/ItemList'
-import Footer from '../Footer/Footer'
+import React from 'react';
 import styles from './App.module.css';
-import TextFieldItem from '../TextField/TextField';
-import DeleteAllComplete from '../DeleteAllComplete/DeleteAllComplete';
-import TaskFilter from '../TaskFilter/TaskFilter';
-import PropTypes from 'prop-types';
+import Todo from '../Todo/Todo';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import Card from '@material-ui/core/Card';
+import MenuItem from '@material-ui/core/MenuItem';
+import MenuList from '@material-ui/core/MenuList';
+import About from '../About/About';
+import Contacts from '../Contacts/Contacts';
 
 const App = () => {
-	const initalState = {
-		items: [
-			{	
-				value: 'Выполнить домашнюю работу',
-				isDone: true,
-				id: 1
-			},
-			{
-				value: 'Убраться',
-				isDone: true,
-				id: 2
-			},
-			{
-				value: 'Прогуляться по набережной',
-				isDone: false,
-				id: 3
-			}	
-		],
-		count: 3
-	};
-
-	const [items, setItems] = useState(initalState.items);
-	const [count, setCount] = useState(initalState.count);
-
-	useEffect(() => {console.log('клац');})
-	useEffect(() => {console.log('образовался');}, [items])
-
-	const OnClickDone = id => {
-		const NewItemList = items.map(item => {
-			const NewItem = { ...item };
-			if (item.id === id) {
-				NewItem.isDone = !item.isDone;
-			}
-			return NewItem;
-		});
-		setItems(NewItemList)
-	};
-
-	const DeleteSelectedElement = id => {
-		const deleteItem = items.filter(item => item.id !==id);
-		setItems(deleteItem)
-		setCount(count - 1)
-	};
-
-	const OnClickAdd = value =>{
-		 setItems(
-		 	[...items,
-		 		{
-		 			value,
-		 			isDone: false,
-		 			id: count + 1
-		 		}]);
-		 setCount(count + 1)
-	}
-
-	return (<div className={styles.wrap}>
-		<h1 className={styles.title}>Задачи на сегодня</h1>
-		<TaskFilter />
-		<TextFieldItem  OnClickAdd={OnClickAdd}/>
-		<ItemList items = { items } OnClickDone={OnClickDone} DeleteSelectedElement={DeleteSelectedElement}/>
-		<DeleteAllComplete />
-		<Footer />
-  	</div>)
-};
-
-App.propTypes = {
-  isDone: PropTypes.bool,
-  id: PropTypes.number,
-  value: PropTypes.string
-
+	return (<Router>
+				<div className={styles.wrap}>
+					<Card className={styles.card}>
+					<MenuList className={styles.menu}>
+			          <Link to ='/' className={styles.link}><MenuItem className={styles.menuItem} >Обо мне</MenuItem></Link>
+			          <Link to ='/todo'className={styles.link}><MenuItem className={styles.menuItem} >Задачи</MenuItem></Link>
+			          <Link to ='/contacts'className={styles.link}><MenuItem className={styles.menuItem} >Контакты</MenuItem></Link>
+			        </MenuList>
+			    	</Card>
+					<Card className={styles.inner}>
+						<Route path ='/' exact component={About}/>
+						<Route path ='/todo' component={Todo}/>
+						<Route path ='/contacts' component={Contacts}/>
+					</Card>
+				</div>
+				</Router>)
 };
 
 export default App;
