@@ -1,8 +1,36 @@
 .wrap {
 	margin: auto;
-	width: 450px;
+	width: 750px;
+	display: flex;
+}
+
+.inner {
+	width: 500px;
+	padding: 0 10px;
+	display: flex;
 }
 
 .title {
 	font-family: Bradley Hand, cursive;
+}
+
+
+.card {
+	height: 200px;
+	margin: auto 10px;
+}
+
+.menu {
+	margin-top: 30%;
+}
+
+.menuItem {
+	font-family: Bradley Hand, cursive!important;
+	font-size: 18px!important;
+	text-decoration: none!important;
+}
+
+.link {
+	text-decoration: none;
+	color: black;
 }
