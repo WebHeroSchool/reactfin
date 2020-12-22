@@ -6,8 +6,6 @@ import TextFieldItem from '../TextField/TextField';
 import DeleteAllComplete from '../DeleteAllComplete/DeleteAllComplete';
 import TaskFilter from '../TaskFilter/TaskFilter';
 import PropTypes from 'prop-types';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-
 
 const Todo = () => {
 	const initalState = {
