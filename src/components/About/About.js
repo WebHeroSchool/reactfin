@@ -9,6 +9,7 @@ class About extends React.Component {
 	state = {
 		isLoading: true,
 		repoList: [],
+		user: [],
 		fetchFailure: false
 	}
 
@@ -42,12 +43,13 @@ class About extends React.Component {
 		const { isLoading, repoList, isError, Texting, user } = this.state;
 		return (<div>
 					{ isLoading ? <CircularProgress /> : <div>
-						{isError ? <div>{Texting}</div> : <div><h1>Обо мне</h1>
-							<img src={user.avatar_url}></img>
-							<ul>
-								<li  className={styles.list}>Имя пользователя: {user.login};</li>
-								<li  className={styles.list}>Информация: {user.bio};</li>
-					 		</ul>
+						{isError ? <div>{Texting}</div> : <div>
+						<h1>Обо мне:</h1>
+						<img src={ user.avatar_url } alt='Аватар'></img>
+						<ul>
+							<li  className={styles.list}>Имя пользователя: {user.login};</li>
+							<li  className={styles.list}>Информация: {user.bio};</li>
+					 	</ul>
 					 <h2>Мои репозитории:</h2>
 					 <div>
 					 	{!isLoading && <div><ol>
