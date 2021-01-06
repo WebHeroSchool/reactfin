@@ -6,10 +6,6 @@ const Footer = ({count, onClickFooter}) => (<div className={styles.title}>
  Количество задач, которые нужно выполнить: {count} 
  </div>) 
 
-Footer.defaultProps = {
-	count: 3
-};
-
 Footer.propTypes = {
 	count: PropTypes.number
 };

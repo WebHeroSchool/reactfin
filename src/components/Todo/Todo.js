@@ -3,43 +3,55 @@ import ItemList from '../ItemList/ItemList';
 import Footer from '../Footer/Footer';
 import styles from './Todo.module.css';
 import TextFieldItem from '../TextField/TextField';
-import DeleteAllComplete from '../DeleteAllComplete/DeleteAllComplete';
-import TaskFilter from '../TaskFilter/TaskFilter';
 import PropTypes from 'prop-types';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 
 const Todo = () => {
-	const initalState = {
+	const state = {
 		items: [
 			{	
-				value: 'Выполнить домашнюю работу',
-				isDone: true,
-				id: 1
-			},
-			{
-				value: 'Убраться',
-				isDone: true,
-				id: 2
-			},
-			{
-				value: 'Прогуляться по набережной',
+				value: 'Добавить задание',
 				isDone: false,
-				id: 3
-			}	
+				id: 1
+			}
 		],
-		count: 3
+		count: 1,
+		label: 'Все'
 	};
 
-	const [items, setItems] = useState(initalState.items);
-	const [count, setCount] = useState(initalState.count);
+	const [items, setItems] = useState(state.items);
+	const [count, setCount] = useState(state.count);
+	const [label, setLabel] = useState(state.label);
+	const [value] = React.useState(0);
+	const useStyles = makeStyles({
+    root: {
+     flexGrow: 1,
+    },
+  });
+
+  const classes = useStyles(); 
+
+	const itemFilter = () => {
+    	if (label === 'Невыполненные') {
+      		return items.filter(item => !item.isDone);
+    	} if (label === 'Выполненные') {
+      		return items.filter(item => item.isDone);
+    	}
+    	return items;
+ 	 };
 
 	const OnClickDone = id => {
 		const NewItemList = items.map(item => {
 			const NewItem = { ...item };
 			if (item.id === id) {
 				NewItem.isDone = !item.isDone;
+				setCount(count - 1)
 			}
+			if (item.isDone === true) 
+				{setCount(count + 1)}
 			return NewItem;
 		});
 		setItems(NewItemList)
@@ -62,12 +74,27 @@ const Todo = () => {
 		 setCount(count + 1)
 	}
 
+	const onClickFilter = (name) => {
+    	setLabel(name)
+  	};
+
 	return (<div><h1 className={styles.title}>Задачи на сегодня</h1>
-		<TaskFilter />
-		<TextFieldItem  OnClickAdd={OnClickAdd}/>
-		<ItemList items = { items } OnClickDone={OnClickDone} DeleteSelectedElement={DeleteSelectedElement}/>
-		<DeleteAllComplete />
-		<Footer /></div>)
+		<Paper className={classes.root}>
+      <Tabs
+        value = {value}
+        indicatorColor="primary"
+        textColor="primary"
+        centered
+        onChange={itemFilter}
+      >
+        <Tab label='Все' onClick={() => onClickFilter('Все')}/>
+        <Tab label='Выполненные' onClick={() => onClickFilter('Выполненные')}/>
+        <Tab label='Невыполненные'onClick={() => onClickFilter('Невыполненные')}/>
+      </Tabs>
+    </Paper>
+		<TextFieldItem  items = { items } OnClickAdd={OnClickAdd}/>
+		<ItemList items = { items } OnClickDone={OnClickDone} DeleteSelectedElement={DeleteSelectedElement} itemFilter={itemFilter}/>
+		<Footer count = {count}/></div>)
 };
 
 Todo.propTypes = {

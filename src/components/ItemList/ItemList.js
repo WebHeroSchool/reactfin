@@ -3,9 +3,9 @@ import Item from '../Item/Item';
 import styles from './ItemList.module.css';
 import PropTypes from 'prop-types';
 
-const ItemList = ({id, items, OnClickDone, DeleteSelectedElement}) => (
+const ItemList = ({id, items, OnClickDone, DeleteSelectedElement, itemFilter}) => (
   <ul className={styles.list}>
-  {items.map(item =><li key = {item.value}>
+  {itemFilter().map(item =><li key = {item.value}>
   	<Item 
   	value = { item.value } 
   	isDone = { item.isDone } 

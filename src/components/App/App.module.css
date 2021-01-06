@@ -1,17 +1,12 @@
-.wrap {
-	margin: auto;
-	width: 750px;
-	display: flex;
+html {
+		background-color: rgba(192,192,192,0.1);
+		font-family: Bradley Hand, cursive;
 }
 
 .inner {
-	width: 500px;
 	padding: 0 10px;
 	display: flex;
-}
-
-.title {
-	font-family: Bradley Hand, cursive;
+	justify-content: center;
 }
 
 
@@ -21,7 +16,8 @@
 }
 
 .menu {
-	margin-top: 30%;
+	display: flex;
+	justify-content: center;
 }
 
 .menuItem {
